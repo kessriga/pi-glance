@@ -1,6 +1,6 @@
 <div align="center">
 
-# ◌ @zhcsyncer/pi-glance
+# ◌ pi-glance
 
 [简体中文](./README.zh-CN.md)
 
@@ -9,14 +9,15 @@
 Replace the default prompt with a configurable multiline editor and an inline glance at Git, cost, Reply speed, context,
 optional tokens, and model—without hiding statuses published by other extensions.
 
-This package is a maintained fork of [`pi-glance`](https://github.com/LinYS77/pi-glance) 0.5.3. It adds a status-only
-footer, Follow Pi theme integration, bottom-right context and auto-compaction details, and a switchable Claude-inspired
-working indicator. Upstream 0.5.3 does not include the working indicator.
+This is a standalone, personally maintained version of [`pi-glance`](https://github.com/LinYS77/pi-glance) 0.5.3, based
+on the Glance package from [`zhcsyncer/pi-extensions`](https://github.com/zhcsyncer/pi-extensions). It keeps the
+status-only footer, Follow Pi theme integration, bottom-right context and auto-compaction details, and switchable
+Claude-inspired working indicator. Upstream 0.5.3 does not include the working indicator.
 
-The [kessriga fork](https://github.com/kessriga/pi-extensions) also adds dot-separated, themed footer statuses, a choice
-of rounded or rectangular borders, and a one-row minimum input height.
+It also provides dot-separated, themed footer statuses, rounded or rectangular borders, and a one-row minimum input
+height. This repository contains only Glance; it does not install or bundle other extensions.
 
-[![npm](https://img.shields.io/npm/v/%40zhcsyncer%2Fpi-glance?style=flat-square&color=blue)](https://www.npmjs.com/package/@zhcsyncer/pi-glance)
+[![CI](https://github.com/kessriga/pi-glance/actions/workflows/ci.yml/badge.svg)](https://github.com/kessriga/pi-glance/actions/workflows/ci.yml)
 [![license](https://img.shields.io/badge/license-MIT-64748b?style=flat-square)](LICENSE)
 [![pi](https://img.shields.io/badge/pi-package-7c3aed?style=flat-square)](https://github.com/earendil-works/pi-mono)
 
@@ -27,15 +28,16 @@ of rounded or rectangular borders, and a one-row minimum input height.
 ## Install
 
 ```bash
-pi remove npm:@zhcsyncer/pi-glance
-pi install git:github.com/kessriga/pi-extensions@dist/glance
+pi install git:github.com/kessriga/pi-glance
 ```
 
-The Git ref contains only Glance. Do not load it alongside another Glance package.
+This package is installed from Git, not npm. Remove any previous Glance package before reloading; use `pi list` to find
+its source and `pi remove <source>` to remove it. Keep `@narumitw/pi-usage` installed if you use its subscription
+status. Glance's saved settings carry over.
 
 Then restart Pi or run `/reload`.
 
-Needs Pi 0.80.4 or newer.
+Needs Pi 0.80.4 or newer. For development and verification commands, see [maintenance](docs/maintenance.md).
 
 ## Use
 

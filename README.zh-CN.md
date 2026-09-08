@@ -1,6 +1,6 @@
 <div align="center">
 
-# ◌ @zhcsyncer/pi-glance
+# ◌ pi-glance
 
 [English](./README.md)
 
@@ -9,12 +9,13 @@
 用可配置的多行编辑器替换默认输入框，在边框中展示 Git、费用、Reply speed、context、可选 tokens
 和模型，同时不隐藏其他扩展发布的状态。
 
-本包是 [`pi-glance`](https://github.com/LinYS77/pi-glance) 0.5.3 的维护 fork，增加 StatusOnly Footer、Follow Pi
-主题、右下角 context / 自动压缩详情，以及可开关的 Claude-inspired working indicator。上游 0.5.3 不包含 working
+这是独立、个人维护的 [`pi-glance`](https://github.com/LinYS77/pi-glance) 0.5.3 衍生版本，基于
+[`zhcsyncer/pi-extensions`](https://github.com/zhcsyncer/pi-extensions) 中的 Glance 包。它保留了 StatusOnly Footer、
+Follow Pi 主题、右下角 context / 自动压缩详情，以及可开关的 Claude-inspired working indicator。上游 0.5.3 不包含 working
 indicator。
 
-[kessriga fork](https://github.com/kessriga/pi-extensions)
-还增加了以圆点分隔、跟随主题的底部状态，可选圆角或直角边框，以及最小一行的输入高度。
+它还提供以圆点分隔、跟随主题的底部状态，可选圆角或直角边框，以及最小一行的输入高度。本仓库只包含 Glance，
+不会安装或捆绑其他扩展。
 
 </div>
 
@@ -23,15 +24,15 @@ indicator。
 ## 安装
 
 ```bash
-pi remove npm:@zhcsyncer/pi-glance
-pi install git:github.com/kessriga/pi-extensions@dist/glance
+pi install git:github.com/kessriga/pi-glance
 ```
 
-此 Git 引用只包含 Glance，不要与其他 Glance 包同时加载。
+本包通过 Git 安装，不发布到 npm。重新加载前，请移除之前的 Glance 包；用 `pi list` 查看其来源，再用 `pi remove <source>`
+移除。如果需要订阅额度状态，请保留 `@narumitw/pi-usage`。Glance 已保存的设置会继续使用。
 
 然后重启 Pi 或执行 `/reload`。
 
-需要 Pi 0.80.4 或更新。
+需要 Pi 0.80.4 或更新。开发与验证命令见[维护说明](docs/maintenance.md)。
 
 ## 使用
 

@@ -1,1 +1,9 @@
 .tmp-git-dev/
+node_modules/
+.worktrees/
+.memdb/
+.memtrace/
+.pi/
+*.tgz
+*.log
+.DS_Store
