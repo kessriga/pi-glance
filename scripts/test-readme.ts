@@ -5,7 +5,7 @@ import { GLANCE_THEMES } from "../themes.js";
 
 const readme = (await readFile("README.md", "utf8")).replace(/\s+/g, " ");
 const readmeZh = (await readFile("README.zh-CN.md", "utf8")).replace(/\s+/g, " ");
-const upstreamSource = await readFile("UPSTREAM_SOURCE.md", "utf8");
+const upstreamSource = (await readFile("UPSTREAM_SOURCE.md", "utf8")).replace(/\s+/g, " ");
 
 function assertReadmeIncludes(fragment: string, message: string): void {
 	assert.ok(readme.includes(fragment), message);
@@ -15,10 +15,11 @@ function assertReadmeExcludes(fragment: string, message: string): void {
 	assert.equal(readme.includes(fragment), false, message);
 }
 
-assertReadmeIncludes("maintained fork", "README should identify this package as a maintained fork");
+assertReadmeIncludes("standalone, personally maintained", "README should identify this as a standalone personal version");
 assertReadmeIncludes("./assets/demo.png", "README should use the local Glance demo screenshot");
 assertReadmeExcludes("LinYS77/pi-glance/main/assets/demo.gif", "README should not keep the upstream demo gif as the user-facing screenshot");
-assertReadmeIncludes("pi install git:github.com/kessriga/pi-extensions@dist/glance", "README should install the Glance-only fork");
+assertReadmeIncludes("pi install git:github.com/kessriga/pi-glance", "README should install the standalone repository");
+assertReadmeExcludes("@dist/glance", "README should not require a monorepo export branch");
 assertReadmeIncludes("`Border shape`", "README should document the border shape setting");
 assertReadmeIncludes("1 / 2 / 3 / 4", "README should document the one-row minimum");
 assertReadmeIncludes("npm:@narumitw/pi-usage", "README should name the separate subscription usage provider");
@@ -58,7 +59,7 @@ assert.equal("footer" in defaultConfig(), false, "README footer behavior should 
 assert.deepEqual(defaultConfig().bottomDetails, { showAutoCompact: true }, "README bottom-details JSON should stay aligned with defaultConfig");
 assert.deepEqual(defaultConfig().context, { text: "percent+tokens", progress: false, progressStyle: "border", progressWidth: "third" }, "README context progress defaults should stay aligned with defaultConfig");
 assert.equal(defaultConfig().git.worktreeSummary, "status", "README Working Tree default should stay aligned with defaultConfig");
-assert.ok(readmeZh.includes("pi install git:github.com/kessriga/pi-extensions@dist/glance"), "Chinese README should document the Glance-only fork install");
+assert.ok(readmeZh.includes("pi install git:github.com/kessriga/pi-glance"), "Chinese README should document the standalone install");
 assert.ok(readmeZh.includes("./assets/demo.png"), "Chinese README should use the local Glance demo screenshot");
 assert.ok(readmeZh.includes("`Progress bar`"), "Chinese README should document context progress mode");
 assert.ok(readmeZh.includes("未用部分细线 `─`，已用部分粗线 `━`"), "Chinese README should document border progress glyphs");
